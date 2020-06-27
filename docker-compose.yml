@@ -32,6 +32,9 @@ services:
     links:
       - kafka
       - mysql
+    depends_on:
+      - kafka
+      - mysql
   mysql:
     image: 'mysql:5.7'
     command:
@@ -42,7 +45,6 @@ services:
       - '3306:3306'
     environment:
       - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=maxwell
 volumes:
   zookeeper_data:
     driver: local
